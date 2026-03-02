@@ -1,0 +1,99 @@
+* {
+    outline: 1px solid red; /* Marcador de bordes */
+    color: #fff; /* Poner todo el texto blanco */
+    font-family: sans-serif;
+}
+
+/* Fondo espacial estrellado simple */
+body {
+    background-color: #000;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+}
+
+/* Letras de neon en los títulos */
+.cuerpo h1, h2, h3, h4 {
+    color: #4eff26;
+    text-shadow: 0 0 2px #39ff14, 0 0 4px #39ff14;
+}
+
+/* Primera alineación */
+.navegacion-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+
+    /* Espacios laterales */
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1200px; /* limita el ancho total */
+    margin: 0 auto; /* Centra contenedor */
+}
+
+/* Color del titulo de la barra de navegacion */
+.navegacion-principal h1 {
+    color: #000;
+}
+
+/* Alineación de logo y título */
+.contenedor-titulo-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Alineación y eliminación de estilos de la lista */
+.navegacion-principal ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Espacio entre los elementos de la lista */
+}
+
+/* Color de los elementos de la lista */
+.navegacion-principal ul li a {
+    color: #666;
+    /* Efecto de borde */
+    -webkit-text-stroke: 0.3px #800080;
+    font-size: 16px;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 2px rgba(129, 21, 133, 0.8);/* Sombras de colores */
+    text-decoration: none; /* QUitar el subrayado */
+    /*font-weight: bold; /* Letras mas gruesas */
+    /* Suavizar cambio al hacer click */
+    transition: color 0.3s ease;
+}
+
+/* Efectos al hacerl click */
+.navegacion-principal ul li a:active {
+    color: #C71585;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Efectos al pasar el cursor por encima */
+.navegacion-principal ul li a:hover {
+    color: #C71585;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Alinear cuerpo */
+.cuerpo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Alinear footer */
+.pie-de-pagina-general {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
