@@ -1,99 +1,168 @@
 * {
-    /*outline: 1px solid red; /* Marcador de bordes */
-    color: #fff; /* Poner todo el texto blanco */
-    font-family: sans-serif;
+  /*outline: 1px solid rgb(52, 255, 11); /* Marcador de bordes */
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
-
-/* Fondo espacial estrellado simple */
-body {
-    background-color: #000;
-    background-image:
-        radial-gradient(white, rgba(255,255,255,2) 2px, transparent 3px),
-        radial-gradient(white, rgba(255,255,255,15) 1px, transparent 2px),
-        radial-gradient(white, rgba(255,255,255,1) 2px, transparent 3px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
+:root {
+  --primary-color: #2a31f3;
+  --bg-menu: rgba(0, 0, 0, 0.9);
+  --transition-speed: 0.4s;
+  --ease-human: cubic-bezier(
+    0.2,
+    0.3,
+    0.2,
+    0.3
+  ); /*Curva del movimiento natural*/
 }
-
-/* Letras de neon en los títulos */
-.cuerpo h1, h2, h3, h4 {
-    color: #4eff26;
-    text-shadow: 0 0 2px #39ff14, 0 0 4px #39ff14;
+/*=========================================================*/
+/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+/*=========================================================*/
+/* BARRA DE NAVEGACION */
+/*=========================================================*/
+.barra-navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgb(0, 0, 0);
+  color: #2a31f3;
+  backdrop-filter: 0.16rem;
 }
-
-/* Primera alineación */
-.navegacion-principal {
+/*Escondemos el checkbox*/
+.menu-checkbox {
+  display: none;
+}
+/*El botón de hamburguesa*/
+.boton-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1100;
+}
+.boton-menu span {
+  width: 2rem;
+  height: 0.3rem;
+  background: #fff;
+  transition: var(--transition-speed) var(--ease-human);
+  border-radius: 0.16rem;
+}
+/*Menú lateral(fuera de pantalla por defecto*/
+.lista-menu {
+  position: fixed;
+  top: 0;
+  right: -100%; /*Escondido a ala derecha*/
+  width: 70%;
+  max-width: 14.75rem; /*300px/16px*/
+  height: 100vh; /*Altura de la ventana del dispositivo*/
+  background: var(--bg-menu);
+  backdrop-filter: blur(0.625rem); /*Efecto Moderno de cristal*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 2rem;
+  transition: right var(--transition-speed) var(--ease-human);
+  box-shadow: -0.625rem 0 1.875rem rgba(0, 0, 0, 0.08);
+}
+/*Lógica de apertura: Cuando el checkbox está marcado*/
+.menu-checkbox:checked ~ .lista-menu {
+  right: 1%; /*Para que no quede tan pegado a la derecha*/
+}
+/*Animación de los botones para formar una x*/
+.menu-checkbox:checked ~ .boton-menu span:nth-child(1) {
+  transform: translateY(0.5rem) rotate(45deg);
+  background: #fff;
+}
+.menu-checkbox:checked ~ .boton-menu span:nth-child(2) {
+  opacity: 0;
+}
+.menu-checkbox:checked ~ .boton-menu span:nth-child(3) {
+  transform: translateY(-0.75rem) rotate(-45deg); /*-0.75rem porque no queda bien alineado para hacer la x*/
+  background: #fff;
+}
+/*Enlaces con feedback visual rápido*/
+.lista-menu li {
+  list-style: none; /*Reset*/
+  padding: 0;
+  margin: 0.05rem;
+}
+.lista-menu a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s;
+  padding: 0.4rem;
+}
+.lista-menu a:hover {
+  background-color: #444;
+  border-radius: 0.4rem;
+}
+.lista-menu a:hover {
+  color: var(--primary-color);
+}
+.enlace-activo {
+  background-color: #2a31f3;
+  border-radius: 0.4rem;
+}
+/*=========================================================*/
+/*MENÚ HORIZOTAL PANTALLAS GRANDES*/
+/*=========================================================*/
+@media (min-width: 48rem) {
+  .boton-menu {
+    display: none;
+  }
+  .lista-menu {
+    position: static;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-
-    /* Espacios laterales */
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 1200px; /* limita el ancho total */
-    margin: 0 auto; /* Centra contenedor */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    height: auto;
+    width: 100%;
+    gap: 0;
+    margin: 0.4rem;
+    padding: 0.4rem;
+    box-shadow: none;
+  }
+  .lista-menu a {
+    display: block;
+    font-size: clamp(
+      0.7rem,
+      1.2vw,
+      1rem
+    ); /*Adaptar el tamaño de las letras a la pantalla*/
+    padding: 0.5rem 0.8vw; /*Relleno lateral que depende dle ancho de la pantalla*/
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
 }
-
-/* Color del titulo de la barra de navegacion */
-.navegacion-principal h1 {
-    color: #000;
+/*=========================================================*/
+/* LOGO */
+/*=========================================================*/
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
-
-/* Alineación de logo y título */
-.contenedor-titulo-logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.logo h2 {
+  margin: 0;
+  padding: 0;
 }
-
-/* Alineación y eliminación de estilos de la lista */
-.navegacion-principal ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 20px; /* Espacio entre los elementos de la lista */
-}
-
-/* Color de los elementos de la lista */
-.navegacion-principal ul li a {
-    color: #666;
-    /* Efecto de borde */
-    -webkit-text-stroke: 0.3px #800080;
-    font-size: 16px;
-    font-family: sans-serif;
-    text-shadow: 1px 1px 2px rgba(129, 21, 133, 0.8);/* Sombras de colores */
-    text-decoration: none; /* QUitar el subrayado */
-    /*font-weight: bold; /* Letras mas gruesas */
-    /* Suavizar cambio al hacer click */
-    transition: color 0.3s ease;
-}
-
-/* Efectos al hacerl click */
-.navegacion-principal ul li a:active {
-    color: #C71585;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Efectos al pasar el cursor por encima */
-.navegacion-principal ul li a:hover {
-    color: #C71585;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-/* Alinear cuerpo */
-.cuerpo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-}
-
-/* Alinear footer */
-.pie-de-pagina-general {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
+/*=========================================================*/
+/* FIN >>>> BARRA DE NAVEGACION */
+/*=========================================================*/
+/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+/*=========================================================*/
+/* Cuerpo General */
+/*=========================================================*/
