@@ -1,9 +1,33 @@
-const menu = document.querySelector('#mobile-menu');
-const menuLinks = document.querySelector('.nav-links');
+// Obtener elementos
+const dropdownButton = document.getElementById("dropdownButton");
+const dropdownMenu = document.getElementById("dropdownMenu");
 
-menu.addEventListener('click', function() {
-    menuLinks.classList.toggle('active');
-    
-    // Animación simple del botón (opcional)
-    menu.classList.toggle('is-active');
+// Función para alternar la visibilidad del menú
+function toggleMenu(event) {
+  event.stopPropagation(); // Evita que el clic en el botón se propague al documento
+  dropdownMenu.classList.toggle("show");
+  dropdownButton.classList.toggle("active"); // Añade/quita la clase active
+}
+
+// Abrir/cerrar al hacer clic en el botón
+dropdownButton.addEventListener("click", toggleMenu);
+
+// Cerrar el menú si se hace clic fuera de él
+document.addEventListener("click", function (event) {
+  // Verificar si el clic no fue en el botón ni en el menú
+  if (
+    !dropdownButton.contains(event.target) &&
+    !dropdownMenu.contains(event.target)
+  ) {
+    dropdownMenu.classList.remove("show");
+    dropdownButton.classList.remove("active"); // Quita la clase active
+  }
+});
+
+// Opcional: cerrar con la tecla Escape
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && dropdownMenu.classList.contains("show")) {
+    dropdownMenu.classList.remove("show");
+    dropdownButton.classList.remove("active"); // Quita la clase active
+  }
 });

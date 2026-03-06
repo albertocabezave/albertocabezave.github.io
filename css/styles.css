@@ -1,168 +1,141 @@
 * {
-  /*outline: 1px solid rgb(52, 255, 11); /* Marcador de bordes */
+  outline: 1px solid rgb(52, 255, 11); /* Marcador de bordes */
   font-family: sans-serif;
   box-sizing: border-box;
 }
-:root {
-  --primary-color: #2a31f3;
-  --bg-menu: rgba(0, 0, 0, 0.9);
-  --transition-speed: 0.4s;
-  --ease-human: cubic-bezier(
-    0.2,
-    0.3,
-    0.2,
-    0.3
-  ); /*Curva del movimiento natural*/
-}
+
 /*=========================================================*/
-/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
-/*=========================================================*/
-/* BARRA DE NAVEGACION */
-/*=========================================================*/
-.barra-navegacion {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgb(0, 0, 0);
-  color: #2a31f3;
-  backdrop-filter: 0.16rem;
-}
-/*Escondemos el checkbox*/
-.menu-checkbox {
-  display: none;
-}
-/*El botón de hamburguesa*/
-.boton-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 1100;
-}
-.boton-menu span {
-  width: 2rem;
-  height: 0.3rem;
-  background: #fff;
-  transition: var(--transition-speed) var(--ease-human);
-  border-radius: 0.16rem;
-}
-/*Menú lateral(fuera de pantalla por defecto*/
-.lista-menu {
-  position: fixed;
-  top: 0;
-  right: -100%; /*Escondido a ala derecha*/
-  width: 70%;
-  max-width: 14.75rem; /*300px/16px*/
-  height: 100vh; /*Altura de la ventana del dispositivo*/
-  background: var(--bg-menu);
-  backdrop-filter: blur(0.625rem); /*Efecto Moderno de cristal*/
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  gap: 2rem;
-  transition: right var(--transition-speed) var(--ease-human);
-  box-shadow: -0.625rem 0 1.875rem rgba(0, 0, 0, 0.08);
-}
-/*Lógica de apertura: Cuando el checkbox está marcado*/
-.menu-checkbox:checked ~ .lista-menu {
-  right: 1%; /*Para que no quede tan pegado a la derecha*/
-}
-/*Animación de los botones para formar una x*/
-.menu-checkbox:checked ~ .boton-menu span:nth-child(1) {
-  transform: translateY(0.5rem) rotate(45deg);
-  background: #fff;
-}
-.menu-checkbox:checked ~ .boton-menu span:nth-child(2) {
-  opacity: 0;
-}
-.menu-checkbox:checked ~ .boton-menu span:nth-child(3) {
-  transform: translateY(-0.75rem) rotate(-45deg); /*-0.75rem porque no queda bien alineado para hacer la x*/
-  background: #fff;
-}
-/*Enlaces con feedback visual rápido*/
-.lista-menu li {
-  list-style: none; /*Reset*/
-  padding: 0;
-  margin: 0.05rem;
-}
-.lista-menu a {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: #fff;
-  font-weight: 600;
-  transition: color 0.3s;
-  padding: 0.4rem;
-}
-.lista-menu a:hover {
-  background-color: #444;
-  border-radius: 0.4rem;
-}
-.lista-menu a:hover {
-  color: var(--primary-color);
-}
-.enlace-activo {
-  background-color: #2a31f3;
-  border-radius: 0.4rem;
-}
-/*=========================================================*/
-/*MENÚ HORIZOTAL PANTALLAS GRANDES*/
-/*=========================================================*/
-@media (min-width: 48rem) {
-  .boton-menu {
-    display: none;
-  }
-  .lista-menu {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    height: auto;
-    width: 100%;
-    gap: 0;
-    margin: 0.4rem;
-    padding: 0.4rem;
-    box-shadow: none;
-  }
-  .lista-menu a {
-    display: block;
-    font-size: clamp(
-      0.7rem,
-      1.2vw,
-      1rem
-    ); /*Adaptar el tamaño de las letras a la pantalla*/
-    padding: 0.5rem 0.8vw; /*Relleno lateral que depende dle ancho de la pantalla*/
-    white-space: nowrap;
-    flex-shrink: 1;
-    min-width: 0;
-  }
-  body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-}
-/*=========================================================*/
-/* LOGO */
+/* LOGO
 /*=========================================================*/
 .logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0;
+  gap: 0.5rem;
 }
+
 .logo h2 {
   margin: 0;
-  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1;
 }
+
+.logo img {
+  height: 2.5rem;
+  width: auto;
+}
+
 /*=========================================================*/
-/* FIN >>>> BARRA DE NAVEGACION */
+/* BARRA DE NAVEGACION
 /*=========================================================*/
 /*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
+.barra-navegacion {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  z-index: 1000;
+  background: rgb(0, 0, 0);
+  color: #2a31f3;
+}
+
 /*=========================================================*/
-/* Cuerpo General */
+/* Menu desplegble
+/*=========================================================*/
+/* Contenedor del menú (para posicionamiento) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón que abre el menú */
+.dropdown-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.375rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: transparent;
+  color: white;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+/*Boton de hamburguesa - estilos*/
+.dropdown-button span {
+  width: 1.9rem;
+  height: 0.19rem;
+  background-color: #fff;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.dropdown-button:hover {
+  background-color: #2a31f3;
+}
+
+/*Boton de hamburguesa animación X*/
+.dropdown-button.active span:nth-child(1) {
+  transform: rotate(45deg) translate(0.31rem, 0.31rem);
+}
+.dropdown-button.active span:nth-child(2) {
+  opacity: 0;
+}
+.dropdown-button.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(0.45rem, -0.5rem);
+}
+/* Contenido del menú desplegable (oculto por defecto) */
+.dropdown-content {
+  position: absolute;
+  bottom: 100%;
+  right: 0.16rem;
+  margin-bottom: 1rem;
+  background-color: #050505;
+  min-width: 15rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 0.25rem;
+  overflow: hidden;
+
+  /*Estados iniciales (oculto)*/
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.625rem);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+/*Clase para mostrar el menu*/
+.dropdown-content.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /*Pocision final*/
+}
+
+/* Enlaces dentro del menú */
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #222;
+}
+
+/* Clase para mostrar el menú (se añade con JS) */
+.show {
+  display: block;
+}
+/*=========================================================*/
+/* Cuerpo General
 /*=========================================================*/
