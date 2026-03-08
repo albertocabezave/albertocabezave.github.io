@@ -1,5 +1,6 @@
 //========================================================================================
 // ABRIR MENU DESPLEGABLE CON BOTON
+//========================================================================================
 // Obtener elementos
 const dropdownButton = document.getElementById("dropdownButton");
 const dropdownMenu = document.getElementById("dropdownMenu");
@@ -36,6 +37,8 @@ document.addEventListener("keydown", function (event) {
 //========================================================================================
 
 //========================================================================================
+// EFECTO GLITCH
+//========================================================================================
 // Esperar a que el DOM esté listo
 document.addEventListener("DOMContentLoaded", function () {
   // Seleccionamos del <a>
@@ -59,3 +62,16 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("No se encontró el enlace del logo. Verifica la estructura");
   }
 });
+//========================================================================================
+
+//========================================================================================
+// SCROLL SNAPPING
+//========================================================================================
+function irA(idSeccion) {
+  const destino = document.getElementById(idSeccion);
+  destino.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+//========================================================================================

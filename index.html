@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Davinci - Inicio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
 
@@ -20,16 +16,15 @@
             <h2>DAVINCI</h2>
             <!--<div class="progreso-premio" id="progresoPremio"></div>-->
 
-            <!--Pupup (oculto inicialmente)-->
-           <!-- <div class="pupup-premio" id="pupupPremio">
+            <!--Pupup (oculto inicialmente)
+            <div class="pupup-premio" id="pupupPremio">
               <div class="popup-contenido">
                 <button class="cerrar-popup" id="cerrarPopup">x</button>
                 <h3>Perla de Conocimiento</h3>
                 <img src="imagenes/perla.jpg" alt="Imagen inspiradora" id="popupImagen">
                 <p id="popupTexto">Leonardo da Vinci diseccionaba cadáveres para entender mejor cómo dibujar el cuerpo humano ¡La curiosidad te puede hacer perder el asco!</p>
-              </div>-->
-            </div>
-
+              </div>
+            <</div>-->
           </div>
         </a>
 
@@ -53,120 +48,61 @@
     </header>
     <main class="cuerpo">
       <article id="publicacion-inicial">
-        <h2>
-          ¡Bienvenido a bordo!...
+        <section id="seccion-1">
+          <h2>
+            ¡Bienvenido a bordo!...
+
+            <br />
+            <br />
+
+            Entusiasta del Conocimiento!
+          </h2>
+
+          <br />
+
+          <p>Tengo una pregunta para ti...</p>
 
           <br />
           <br />
 
-          Entusiasta del Conocimiento!
-        </h2>
+          <h3>¿Sábes qué era Leonardo da Vinci?</h3>
 
-        <br />
-
-        <p>
-          Tengo una pregunta para ti...
           <br />
-          <br />
-          <h3>¿Sábes quien fue Leonardo da Vinci?</h3>
-        </p>
 
-        <br />
+          <button onclick="irA('seccion-2')">Leer más...</button>
+        </section>
 
-        <input type="button" value="Leer más..." />
+        <section id="seccion-2">
+          <p>La respuesta está en una sola frase...</p>
+          <h2>¡Un POLÍMATA!</h2>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+          <h3>
+            Así que si piensas que él solo era el Gran Pintor que hizo la Mona
+            Lisa...
+          </h3>
+          <h4>
+            ... ¡pues te EQUIVOCAS! Sigue leyendo muchacho... y descubrirás la
+            verdad.
+          </h4>
+          <button onclick="irA('seccion-3')">Leer más...</button>
+        </section>
 
-        <p>La respuesta está en una sola frase...</p>
-        <h2>¡Un POLÍMATA!</h2>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <h3>
-          Así que si piensas que él solo era el Gran Pintor que hizo la Mona
-          Lisa...
-        </h3>
-        <h4>
-          ... ¡pues te EQUIVOCAS! Sigue leyendo muchacho... y descubrirás la
-          verdad.
-        </h4>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <section>
+        <section id="seccion-3">
           <h2>¿Qué es un Polímata y porque Da Vinci lo era?</h2>
           <p>Contenido en desarrollo...</p>
+          <button onclick="irA('seccion-4')">Leer más...</button>
         </section>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <section>
+        <section id="seccion-4">
           <h2>¿Cómo puedes convertirte en uno?</h2>
           <p>Contenido en desarrollo...</p>
+          <button onclick="irA('seccion-5')">Leer más...</button>
         </section>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <section>
+        <section id="seccion-5">
           <h2>¿Porqué querrías convertirte en uno?</h2>
           <p>Contenido en desarrollo...</p>
         </section>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
         <footer>
           <p>Por: Alberto Cabeza</p>
@@ -183,7 +119,9 @@
       <nav>
         <ul>
           <li>
-            <a href="legal/politica-privacidad.html">Política de Privacidad -</a>
+            <a href="legal/politica-privacidad.html"
+              >Política de Privacidad -</a
+            >
           </li>
           -
           <li>

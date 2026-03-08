@@ -1,5 +1,5 @@
 * {
-  /*outline: 1px solid rgb(52, 255, 11); /* Marcador de bordes */
+  outline: 1px solid rgb(52, 255, 11); /* Marcador de bordes */
   font-family: sans-serif;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -16,6 +16,14 @@ body {
   overflow-y: auto;
   overscroll-behavior: none;
   margin: 0.7rem 0.3rem;
+}
+
+/*=========================================================*/
+/* FUENTES
+/*=========================================================*/
+@font-face {
+  font-family: "orbitronblack";
+  src: url("../fuentes/orbitron/orbitron-black.otf") format("opentype");
 }
 
 /*=========================================================*/
@@ -264,14 +272,14 @@ body {
 /* Ajustes de color y espacios */
 
 body {
-  background-color: #161b22;
+  background-color: #0d1117;
   color: #e0e0e0;
   padding: 0.7rem;
   padding-top: 0.5rem;
   padding-bottom: 6.5rem;
 }
 main {
-  background-color: #483d8b;
+  background-color: #283864;
   text-align: center;
   margin: 0;
   padding: 1rem;
@@ -279,6 +287,10 @@ main {
 article {
   background-color: #1c2541;
   padding: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10%;
+  display: block;
 }
 section {
   padding: 1rem;
@@ -304,4 +316,33 @@ footer ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+/*=========================================================*/
+
+/*=========================================================*/
+/* Tipografía */
+main h2 {
+  font-family: "orbitronblack";
+  text-transform: uppercase;
+}
+/*=========================================================*/
+
+/*=========================================================*/
+/* Scroll Snaping */
+section {
+  height: 85vh; /* Alto de la pantalla */
+  display: flex;
+  gap: 1rem;
+  flex-direction: column; /* Alinear el flex verticalmente */
+  justify-content: center; /* Centrar contenido en el centro de la pantalla */
+  align-items: center; /* alinear al centro verticalmente */
+  scroll-snap-align: start; /* Activa el imán por si el user hace el scroll */
+}
+article {
+  overflow-y: hidden; /* Ocultar la barra lateral de desplazar */
+  scroll-behavior: smooth; /*Salto fluido suave y no de golpe */
+}
+
+article * {
+  vertical-align: top;
 }
