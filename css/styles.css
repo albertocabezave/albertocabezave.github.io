@@ -43,22 +43,20 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0;
+  margin-left: 2rem;
+  gap: 1rem;
 }
-
 .logo h2 {
   margin: 0;
   margin-bottom: 0.4rem;
   padding: 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1;
 }
-
 .logo img {
   height: 2.5rem;
   width: auto;
 }
-
 .barra-navegacion a {
   text-decoration: none;
   color: #fff;
@@ -71,7 +69,7 @@ body {
 .logo,
 .logo h2,
 .logo img {
-  animation: respirar 3.8s ease-in-out infinite;
+  animation: respirar 3s ease-in-out infinite;
 }
 @keyframes respirar {
   0% {
@@ -169,9 +167,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 2rem;
   gap: 0.375rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   background-color: transparent;
   color: white;
   border: 0.016rem rgba(27, 45, 5, 0.942);
@@ -248,9 +247,11 @@ body {
   padding: 0.8rem 1rem;
   text-decoration: none;
   display: block;
+  border-bottom: rgba(124, 178, 255, 0.6) 0.1rem solid;
 }
 .dropdown-content a:hover {
-  background-color: #222;
+  background-color: #262626;
+  transition: 0.2s;
 }
 
 /* Clase para mostrar el menú (se añade con JS) */
@@ -261,8 +262,42 @@ body {
 /*=========================================================*/
 /* Cuerpo General
 /*=========================================================*/
-/* Ajustes de color y espacios */
+/*---------------------------------------------------------*/
+/*=========================================================*/
+/* Fuentes
+/*=========================================================*/
+@font-face {
+  font-family: "orbitronBlack";
+  src: url("../fuentes/orbitron-black.otf") format("opentype");
+}
+@font-face {
+  font-family: "poppinsBlack";
+  src: url("../fuentes/Poppins-Black.ttf");
+}
+@font-face {
+  font-family: "montserratBold";
+  src: url("../fuentes/Montserrat-Bold.ttf");
+}
+/*=========================================================*/
+/* Tipografía */
+main {
+  font-family: sans-serif;
+}
+main h1 {
+  font-family: orbitronBlack;
+  text-transform: uppercase;
+}
+main h2 {
+  font-family: "poppinsBlack", sans-serif;
+  text-transform: uppercase;
+}
+main h3 {
+  font-family: "montserratBold", sans-serif;
+}
+/*=========================================================*/
 
+/*=========================================================*/
+/* Ajustes de color y espacios */
 body {
   background-color: #0d1117;
   color: #e0e0e0;
@@ -274,6 +309,7 @@ main {
   background-color: #283864;
   text-align: center;
   margin: 0;
+  margin-top: 1rem;
   padding: 1rem;
 }
 article {
@@ -281,35 +317,12 @@ article {
   padding: 1rem;
   width: 100%;
   margin: 0 auto;
-  padding: 10%;
+  padding-bottom: 0;
   display: block;
 }
 section {
+  margin-top: -3rem; /*Subir o bajar el h1 */
   padding: 1rem;
-}
-main footer {
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-/*=========================================================*/
-
-/*=========================================================*/
-/* FUENTES
-/*=========================================================*/
-@font-face {
-  font-family: "orbitronBlack";
-  src: url("../fuentes/orbitron-black.otf") format("opentype");
-}
-@font-face {
-  font-family: "poppinsBlack";
-  src: url("../fuentes/Poppins-Black.ttf");
-}
-/*=========================================================*/
-/* Tipografía */
-main h2 {
-  font-family: "poppinsBlack", sans-serif;
-  text-transform: uppercase;
 }
 /*=========================================================*/
 
@@ -336,7 +349,7 @@ article * {
 /*=========================================================*/
 /* Boton de cristal */
 .btn-cristal {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(0.6rem);
   -webkit-backdrop-filter: blur(0.6rem);
   border: 0.1rem solid rgba(255, 255, 255, 0.1);
@@ -348,19 +361,29 @@ article * {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 0.25rem;
+  box-shadow:
+    0.05rem 0.2rem 0.5rem rgba(0, 187, 255, 0.554),
+    inset 0 0.225rem 0.325rem rgba(0, 187, 255, 0.63);
+  padding-bottom: 1rem;
 }
 /* Hover */
 .btn-cristal:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(1, 18, 115, 0.338);
   border: 0.1rem rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 1rem rgba(255, 255, 255, 0.1);
   transform: translateY(-0.2rem);
+  box-shadow:
+    0.05rem 0.2rem 0.5rem rgba(0, 187, 255, 0.554),
+    inset 0 0.225rem 0.325rem rgba(0, 187, 255, 0.63);
 }
 
 /*Boton de subir flotante que aparece solo*/
 .btn-cristal.up {
   align-self: flex-end;
   margin-top: 12rem;
+  margin-bottom: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 0.7rem;
 }
 
 /* Diseño de flechas chevron */
